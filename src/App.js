@@ -15,7 +15,12 @@ function App() {
   };
   const handleEqual = () => {
     try {
-      setResult(eval(input).toString()); //eval used to caculate input
+      if (/[\+\-\*\/]$/.test(input)) {
+        setInput('Error');
+      }else{
+        setResult(eval(input).toString()); //eval used to caculate input
+      }
+      
     } catch (error) {
       setResult(error);
     }
