@@ -15,14 +15,16 @@ function App() {
   };
   const handleEqual = () => {
     try {
-      if (/[\+\-\*\/]$/.test(input)) {
-        setInput('Error');
-      }else{
-        setResult(eval(input).toString()); //eval used to caculate input
-      }
+      // if (input.trim() === "") {
+      //   setResult("Error");
+      //   return;
+      // }
+      const evaluatedResult = eval(input);//eval used to caculate input
+        setResult(evaluatedResult.toString()); 
+      
       
     } catch (error) {
-      setResult(error);
+      setResult('Error');
     }
   };
 
@@ -30,7 +32,7 @@ function App() {
     <div className="App">
       <h1>React Calculator</h1>
       <input type="text" value={input} readOnly />
-      {result && <h1 style={{ color: "" }}>Result: {result}</h1>}
+      {result && <h1 style={{ color: "" }}>{result}</h1>}
       <div style={{ marginTop: "10px", marginBottom: "10px" }}>
         <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
           <button onClick={() => handleButtonClick(7)}>7</button>
